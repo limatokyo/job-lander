@@ -1,0 +1,45 @@
+{
+  "_comment": "Job Lander seeker profile. Copy to profile.json and fill in. This is the ONLY file that holds seeker-specific data — everything else in Job Lander is generic and works for any job seeker. The Step 0 onboarding questionnaire in SKILL.md populates this file.",
+
+  "seeker": {
+    "name": "",
+    "email": "",
+    "resume_path": "Absolute path to the seeker's standard resume .docx — the single source of truth for every customization. Never invent facts not in it.",
+    "work_authorization": {
+      "authorized_now_without_sponsorship": true,
+      "will_need_sponsorship_in_future": false,
+      "note": "Free text, e.g. 'US permanent resident' or 'F-1 OPT now, needs H-1B by 2027'. Drives the sponsorship hard-filter — postings that exclude sponsorship now OR in future are rejected when either flag applies."
+    }
+  },
+
+  "search": {
+    "target_roles": ["Role titles to search, e.g. Senior Product Manager, Technical Program Manager"],
+    "seniority_levels": ["Allowed levels, e.g. Senior, Staff, Principal, Manager"],
+    "max_level_note": "e.g. 'not Director or above' — Agent 1 rejects roles above this even if the domain fits",
+    "locations": ["e.g. Seattle, WA", "Remote (US)"],
+    "work_model": ["onsite", "hybrid", "remote"],
+    "recency_days": 3,
+    "top_x": 5,
+    "min_fit_score": 7.5,
+    "min_salary": null,
+    "exclude": []
+  },
+
+  "scoring_weights": {
+    "skills_overlap": 0.35,
+    "experience_transferability": 0.30,
+    "seniority_fit": 0.20,
+    "domain_adjacency": 0.15
+  },
+
+  "memory": {
+    "spreadsheet_id": "Google Sheet ID used as the job log / dedupe memory",
+    "tab": "Jobs",
+    "columns": ["date_seen", "title", "company", "link", "fit_score", "status"]
+  },
+
+  "delivery": {
+    "notify_email": "Where the final application packet is emailed (defaults to seeker.email)",
+    "mode": "send"
+  }
+}

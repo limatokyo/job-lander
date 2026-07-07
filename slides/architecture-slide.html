@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job Lander — Architecture</title>
+<style>
+  :root{--bg:#faf8f5;--ink:#1c2430;--muted:#6b7480;--accent:#2e5a88;--accent2:#3f8f6f;--gate:#c46a2f;--line:#c9cfd6;--card:#ffffff;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;padding:28px;}
+  .slide{max-width:1180px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:34px 40px;box-shadow:0 6px 30px rgba(0,0,0,.06);}
+  h1{font-size:30px;letter-spacing:-.4px}
+  h1 .em{color:var(--accent)}
+  .sub{color:var(--muted);margin-top:4px;font-size:15px}
+  .legend{display:flex;gap:18px;margin:14px 0 22px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+  .chip{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+  .band{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap}
+  .col{flex:1;min-width:150px}
+  .box{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.35;height:100%}
+  .box .t{font-weight:700;font-size:14px;margin-bottom:4px}
+  .box .m{color:var(--muted);font-size:12px}
+  .agent{border-color:var(--accent)}
+  .agent .t{color:var(--accent)}
+  .agent2{border-color:var(--accent2)}
+  .agent2 .t{color:var(--accent2)}
+  .gate{border-color:var(--gate);background:#fdf6ef}
+  .gate .t{color:var(--gate)}
+  .arrow{align-self:center;color:var(--muted);font-size:22px;padding:0 2px}
+  .row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:14px 0}
+  .infra{display:flex;gap:14px;margin-top:8px}
+  .infra .box{flex:1}
+  .rail{margin:20px 0 8px;border-top:1px dashed var(--line);padding-top:16px}
+  .flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;font-size:12.5px}
+  .pill{border:1.5px solid var(--line);border-radius:999px;padding:6px 12px;background:#fff;white-space:nowrap}
+  .pill.g{border-color:var(--gate);color:var(--gate);background:#fdf6ef;font-weight:600}
+  .stack{margin-top:20px;display:flex;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:4px 8px;background:#fff}
+  .foot{margin-top:16px;color:var(--muted);font-size:12px;text-align:center}
+  @media print{body{padding:0;background:#fff}.slide{border:none;box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="slide">
+  <h1>Job Lander — <span class="em">Dual-Agent Architecture</span></h1>
+  <div class="sub">One orchestrator, two specialist agents, three human gates. Backed by a Google Sheet (memory) and Gmail (delivery).</div>
+
+  <div class="legend">
+    <span class="chip"><span class="dot" style="background:var(--accent)"></span> Agent 1 (Job Finder)</span>
+    <span class="chip"><span class="dot" style="background:var(--accent2)"></span> Agent 2 (Resume Customizer)</span>
+    <span class="chip"><span class="dot" style="background:var(--gate)"></span> Human approval gate</span>
+    <span class="chip"><span class="dot" style="background:var(--muted)"></span> Memory / delivery</span>
+  </div>
+
+  <!-- inputs → orchestrator → memory -->
+  <div class="row">
+    <div class="box"><div class="t">Inputs</div><div class="m"><b>profile.json</b> (the only seeker-specific config) + standard résumé <b>.docx</b></div></div>
+    <div class="box" style="border-color:var(--ink)"><div class="t">Job Lander — Orchestrator</div><div class="m">The manager. Loads profile, runs the flow, enforces the 3 gates, owns memory & delivery. Delegates; never searches or writes itself.</div></div>
+    <div class="box"><div class="t">Memory — Google Sheet</div><div class="m">Every job logged: <b>seen → approved → tailored → sent</b>. Dedupes so nothing is re-recommended.</div></div>
+  </div>
+
+  <!-- two agents -->
+  <div class="band">
+    <div class="col"><div class="box agent"><div class="t">▸ Agent 1 — Job Finder</div><div class="m">Searches <b>SerpApi Google Jobs</b> (LinkedIn + Indeed + Glassdoor + company sites, full JDs). Hard-filters (location, role, seniority ceiling, sponsorship, salary), scores 0–10 vs. résumé, dedupes. Returns a ranked shortlist — <b>never pads</b>.</div></div></div>
+    <div class="arrow">→</div>
+    <div class="col"><div class="box gate"><div class="t">🧑 Gate 1 — Approve</div><div class="m">Seeker approves which shortlisted jobs to pursue. Only approved jobs continue.</div></div></div>
+    <div class="arrow">→</div>
+    <div class="col"><div class="box gate"><div class="t">🧑 Gate 2 — Clarify</div><div class="m">Agent 2 asks <b>one batched set</b> of questions for gaps it won't guess at. Real answers, never invention.</div></div></div>
+    <div class="arrow">→</div>
+    <div class="col"><div class="box agent2"><div class="t">▸ Agent 2 — Resume Customizer</div><div class="m">Tailors résumé per approved job from <b>real</b> experience + answers. Outputs <b>.docx + PDF</b> + recruiter ranking.</div></div></div>
+  </div>
+
+  <div class="rail">
+    <div class="flow">
+      <span class="pill">Assemble packet</span><span class="arrow">→</span>
+      <span class="pill">Gmail — auto-send to seeker (résumés + apply links)</span><span class="arrow">→</span>
+      <span class="pill g">🧑 Gate 3 — Seeker applies (manual, always)</span>
+    </div>
+  </div>
+
+  <div class="stack">
+    <span class="tag">Claude Code — agent runtime</span>
+    <span class="tag">SerpApi Google Jobs — discovery (LinkedIn/Indeed/Glassdoor)</span>
+    <span class="tag">Google Workspace MCP (self-hosted) — Sheets + Gmail</span>
+    <span class="tag">python-docx — résumé generation</span>
+    <span class="tag">LibreOffice — PDF</span>
+  </div>
+
+  <div class="foot">Automate the exhausting middle • keep the human at every real decision • never fabricate • free to run</div>
+</div>
+</body>
+</html>

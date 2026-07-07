@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job Lander — Pitch Deck</title>
+<style>
+  :root{--bg:#0f1622;--ink:#eef2f7;--muted:#9aa7b6;--accent:#5aa0e0;--accent2:#5fc79a;--gate:#e0955a;--card:#18212f;--line:#2a3646;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  .deck{scroll-snap-type:y mandatory;overflow-y:auto;height:100vh}
+  .slide{scroll-snap-align:start;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8vh 9vw;position:relative}
+  .kicker{color:var(--accent);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-size:13px;margin-bottom:14px}
+  h1{font-size:clamp(30px,5vw,58px);letter-spacing:-1px;line-height:1.05}
+  h2{font-size:clamp(24px,3.4vw,40px);letter-spacing:-.5px;margin-bottom:18px}
+  p,li{font-size:clamp(15px,1.5vw,20px);color:var(--muted);line-height:1.55}
+  .big{color:var(--ink)}
+  .accent{color:var(--accent)} .accent2{color:var(--accent2)} .gate{color:var(--gate)}
+  ul{margin:10px 0 0 22px} li{margin:8px 0}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+  .card h3{font-size:18px;margin-bottom:8px}
+  .card.a{border-color:var(--accent)} .card.b{border-color:var(--accent2)} .card.g{border-color:var(--gate)}
+  .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+  table{width:100%;border-collapse:collapse;margin-top:20px;font-size:clamp(13px,1.4vw,17px)}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--ink);font-size:14px} td{color:var(--muted)}
+  .yes{color:var(--accent2);font-weight:700} .no{color:#e06a6a;font-weight:700}
+  .foot{position:absolute;bottom:3vh;left:9vw;right:9vw;display:flex;justify-content:space-between;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:10px}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--muted);font-size:13px;margin:4px 6px 0 0}
+  .lead{font-size:clamp(18px,2vw,26px);color:var(--ink)}
+  @media print{.slide{min-height:auto;page-break-after:always;padding:6vh 6vw}.deck{height:auto;overflow:visible}.foot{position:static;margin-top:20px}}
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <section class="slide">
+    <div class="kicker">AI Hackathon · Dual-Agent System</div>
+    <h1>Job Lander 🎯</h1>
+    <p class="lead" style="margin-top:16px">Finds your best-fit jobs, tailors your résumé to each, and emails you a ready-to-apply packet — end to end, with you in control at every decision.</p>
+    <div style="margin-top:22px"><span class="pill">Two agents</span><span class="pill">Three human gates</span><span class="pill">Searches LinkedIn</span><span class="pill">Never fabricates</span><span class="pill">Free to run</span></div>
+    <div class="foot"><span>Job Lander</span><span>1 / 8</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">The Problem</div>
+    <h2>Tailoring is the biggest lever — and the biggest time sink</h2>
+    <p class="lead">A tailored résumé is how you stand out against hundreds of applicants. But it costs <span class="big">30–60 minutes each</span>.</p>
+    <p style="margin-top:16px">So every job seeker faces the same trade-off:</p>
+    <div class="grid">
+      <div class="card g"><h3>Apply broadly</h3><p>Blast a generic résumé → filtered out by ATS and recruiters.</p></div>
+      <div class="card g"><h3>Apply selectively</h3><p>Tailor a few by hand → miss most opportunities.</p></div>
+    </div>
+    <p style="margin-top:18px">…and that's <em>after</em> the daily grind of scanning job boards just to find the right roles.</p>
+    <div class="foot"><span>Job Lander</span><span>2 / 8</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">The Solution</div>
+    <h2>Two specialist agents, one orchestrator, three human gates</h2>
+    <div class="grid">
+      <div class="card a"><h3 class="accent">Agent 1 — Job Finder</h3><p>Searches LinkedIn + Indeed + Glassdoor, scores each role against your résumé, returns a ranked shortlist. Never pads.</p></div>
+      <div class="card b"><h3 class="accent2">Agent 2 — Resume Customizer</h3><p>Asks a few batched clarifying questions, then tailors your résumé to each approved job from your <b>real</b> experience.</p></div>
+    </div>
+    <p style="margin-top:20px"><span class="gate">🧑 Gate 1</span> approve the shortlist &nbsp;·&nbsp; <span class="gate">🧑 Gate 2</span> answer gaps with real facts &nbsp;·&nbsp; <span class="gate">🧑 Gate 3</span> you apply</p>
+    <div class="foot"><span>Job Lander</span><span>3 / 8</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">How It Works</div>
+    <h2>Onboard once → search → approve → clarify → tailor → delivered</h2>
+    <div class="row3">
+      <div class="card"><h3>1 · Search</h3><p>Agent 1 pulls fresh roles (Google for Jobs), filters on level & sponsorship, scores & ranks.</p></div>
+      <div class="card g"><h3>2 · Approve</h3><p>You pick which to pursue. Only those continue.</p></div>
+      <div class="card g"><h3>3 · Clarify</h3><p>One batched question set fills gaps with real answers.</p></div>
+      <div class="card"><h3>4 · Tailor</h3><p>Agent 2 writes a one-page résumé (.docx + PDF) per job.</p></div>
+      <div class="card"><h3>5 · Deliver</h3><p>Auto-emails you the packet + apply links; logs to a Google Sheet.</p></div>
+      <div class="card g"><h3>6 · Apply</h3><p>You click apply. Job Lander never submits for you.</p></div>
+    </div>
+    <div class="foot"><span>Job Lander</span><span>4 / 8</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">What Makes It Different</div>
+    <h2>Not another "AI résumé" prompt</h2>
+    <table>
+      <tr><th>Capability</th><th>Typical single-prompt AI résumé tools</th><th>Job Lander</th></tr>
+      <tr><td>Architecture</td><td>One prompt does everything</td><td class="yes">Dual-agent: manager + 2 specialists</td></tr>
+      <tr><td>Finds the jobs too</td><td class="no">No — you paste a JD</td><td class="yes">Yes — searches LinkedIn/Indeed & ranks</td></tr>
+      <tr><td>Human control</td><td>Take-it-or-leave-it output</td><td class="yes">3 approval gates (where, what, apply)</td></tr>
+      <tr><td>Fabrication</td><td class="no">Often invents plausible detail</td><td class="yes">Asks you; writes only real facts</td></tr>
+      <tr><td>Memory</td><td class="no">Stateless</td><td class="yes">Google Sheet: dedupe + audit trail</td></tr>
+      <tr><td>Reusable</td><td>Per-person prompts</td><td class="yes">One profile.json → any seeker</td></tr>
+    </table>
+    <div class="foot"><span>Job Lander</span><span>5 / 8</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">The Differentiators, Up Close</div>
+    <h2>Three things competitors don't do</h2>
+    <div class="grid">
+      <div class="card b"><h3 class="accent2">Anti-fabrication as a feature</h3><p>When a JD needs something your résumé doesn't show, Agent 2 <b>asks</b> — batched, once — instead of inventing. Gaps you don't close are flagged honestly, never papered over.</p></div>
+      <div class="card a"><h3 class="accent">Real, compliant job search</h3><p>Reaches <b>LinkedIn-sourced</b> roles via Google for Jobs (SerpApi) — full descriptions, no scraping, no ToS violation, no risk to your accounts.</p></div>
+      <div class="card g"><h3 class="gate">Human-in-the-loop by design</h3><p>Three gates keep judgment with you: <b>where</b> to apply, <b>what's</b> true about you, and the irreversible decision to <b>apply</b>.</p></div>
+      <div class="card"><h3>Generalized & free</h3><p>Swap one config for any seeker. Self-hosted Google MCP + free SerpApi tier — <b>no paid automation platform</b>.</p></div>
+    </div>
+    <div class="foot"><span>Job Lander</span><span>6 / 8</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">Under The Hood</div>
+    <h2>Built on a practical multi-agent pattern</h2>
+    <p class="lead">Specialized agents that hand off to one another, gated by human approval, delivering a finished real-world outcome — not just a chat response.</p>
+    <div style="margin-top:20px">
+      <span class="pill">Claude Code — orchestration</span>
+      <span class="pill">SerpApi Google Jobs — discovery</span>
+      <span class="pill">Google Workspace MCP — Sheets + Gmail</span>
+      <span class="pill">python-docx — résumé generation</span>
+      <span class="pill">LibreOffice — PDF</span>
+    </div>
+    <p style="margin-top:22px">Reuses two battle-tested skills (Job Finder + Resume Customizer), generalized behind a profile so it works for anyone.</p>
+    <div class="foot"><span>Job Lander</span><span>7 / 8</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">Impact</div>
+    <h2>Hours of repetitive work → a five-minute review</h2>
+    <p class="lead">More tailored applications, submitted earlier, with less burnout — without giving up control over where you apply or what's true about you.</p>
+    <div class="row3" style="margin-top:26px">
+      <div class="card"><h3 class="accent2">Faster</h3><p>Search + tailoring collapse from hours to minutes.</p></div>
+      <div class="card"><h3 class="accent">Higher quality</h3><p>Every application tailored, none fabricated.</p></div>
+      <div class="card"><h3 class="gate">In control</h3><p>You decide where, what, and whether to apply.</p></div>
+    </div>
+    <p style="margin-top:26px;color:var(--ink);font-size:20px">Job Lander 🎯 — the search-and-tailor pipeline, automated. You just apply.</p>
+    <div class="foot"><span>Job Lander</span><span>8 / 8</span></div>
+  </section>
+
+</div>
+<script>
+  // Arrow-key / space navigation between slides
+  const slides=[...document.querySelectorAll('.slide')];let i=0;
+  function go(n){i=Math.max(0,Math.min(slides.length-1,n));slides[i].scrollIntoView({behavior:'smooth'});}
+  addEventListener('keydown',e=>{
+    if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(i+1);}
+    if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(i-1);}
+  });
+  const deck=document.querySelector('.deck');
+  deck.addEventListener('scroll',()=>{i=Math.round(deck.scrollTop/innerHeight);});
+</script>
+</body>
+</html>
