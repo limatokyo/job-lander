@@ -10,7 +10,7 @@ Built as a [Claude Code](https://claude.com/claude-code) skill. Two specialist a
 
 Job searching forces a bad trade-off: **apply broadly with a generic resume that gets filtered out, or tailor each resume by hand (30–60 min each) and apply to only a few.** Job Lander removes the trade-off:
 
-1. **Job Finder** (Agent 1) searches fresh postings across LinkedIn/Indeed/etc., scores each against your résumé, and hands you a ranked shortlist.
+1. **Job Finder** (Agent 1) runs a *targeted* search — only your roles, locations, seniority, and pay — across LinkedIn/Indeed/etc., scores each against your résumé, and hands you a ranked shortlist.
 2. You **approve** which to pursue.
 3. **Resume Customizer** (Agent 2) asks a few clarifying questions (once, batched), then tailors your résumé to each approved job — restructuring your *real* experience, never fabricating.
 4. You get an **email with every tailored résumé + apply link**. You click apply.
