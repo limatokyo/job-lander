@@ -21,6 +21,7 @@ Two agents. Three human gates. Real memory. Real delivery. Zero fabrication. Fre
 - **Dual-agent, not a single prompt** — a manager orchestrates two specialists with a clean handoff.
 - **Human-in-the-loop by design** — three approval gates (shortlist, clarifying questions, apply) keep judgment with the person.
 - **Anti-fabrication is a feature** — Agent 2 *asks* rather than inventing when the résumé doesn't cover a JD requirement.
+- **Reads human, not AI-written** — the Resume Customizer deliberately bans AI-cliché vocabulary, em-dashes, and templated verb patterns, and enforces it with a validation pass — so tailored résumés don't trip recruiters' AI-detector instincts.
 - **Generalized** — everything person-specific lives in one `profile.json`; swap it and Job Lander works for any seeker.
 - **Real infrastructure, free** — self-hosted Google Workspace MCP for Sheets + Gmail, SerpApi Google Jobs for LinkedIn-level coverage. No paid automation platform.
 
