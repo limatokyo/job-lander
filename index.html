@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job Lander — Dual-Agent Job-Application Co-Pilot</title>
+<style>
+  :root{--bg:#0f1622;--ink:#eef2f7;--muted:#9aa7b6;--accent:#5aa0e0;--accent2:#5fc79a;--gate:#e0955a;--card:#18212f;--line:#2a3646;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55;min-height:100vh;padding:9vh 8vw;}
+  .wrap{max-width:920px;margin:0 auto}
+  .kicker{color:var(--accent);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-size:13px}
+  h1{font-size:clamp(34px,6vw,56px);letter-spacing:-1px;margin:12px 0 6px;text-wrap:balance}
+  .lead{font-size:clamp(17px,2vw,22px);color:var(--ink);max-width:60ch}
+  .pills{margin:18px 0 34px}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--muted);font-size:13px;margin:4px 6px 0 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  a.card{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;color:var(--ink);transition:border-color .15s,transform .15s}
+  a.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+  a.card.b:hover{border-color:var(--accent2)} a.card.g:hover{border-color:var(--gate)}
+  a.card h3{font-size:18px;margin-bottom:6px}
+  a.card p{color:var(--muted);font-size:14px}
+  .arrow{color:var(--accent);font-weight:700}
+  h2{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin:34px 0 12px}
+  footer{margin-top:40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:16px}
+  footer a{color:var(--accent)}
+  @media (prefers-color-scheme:light){:root{--bg:#f7f8fa;--ink:#141b25;--muted:#5b6672;--card:#ffffff;--line:#e2e6ec;--accent:#2e5a88;--accent2:#2f8f6b;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">AI Hackathon · Dual-Agent System</div>
+  <h1>Job Lander 🎯</h1>
+  <p class="lead">A dual-agent job-application co-pilot that finds your best-fit jobs, tailors your résumé to each, and emails you a ready-to-apply packet — end to end, with you in control at every decision.</p>
+  <div class="pills"><span class="pill">Two agents</span><span class="pill">Three human gates</span><span class="pill">Searches LinkedIn</span><span class="pill">Never fabricates</span><span class="pill">Free to run</span></div>
+
+  <h2>See it</h2>
+  <div class="grid">
+    <a class="card" href="slides/pitch-deck.html"><h3>Pitch deck <span class="arrow">→</span></h3><p>9 slides: problem, solution, and what makes it different. Use arrow keys.</p></a>
+    <a class="card b" href="slides/architecture-slide.html"><h3>Architecture <span class="arrow">→</span></h3><p>One-page view of the dual-agent workflow and the three gates.</p></a>
+  </div>
+
+  <h2>Read it</h2>
+  <div class="grid">
+    <a class="card" href="docs/PRFAQ.md"><h3>PRFAQ</h3><p>Press release + FAQ — the "why."</p></a>
+    <a class="card" href="docs/user-journey.md"><h3>User journey</h3><p>Product design, stage by stage.</p></a>
+    <a class="card" href="docs/architecture.md"><h3>Architecture doc</h3><p>Components, data flow, tech stack.</p></a>
+    <a class="card g" href="docs/impact-statement.md"><h3>Impact statement</h3><p>Problem, audience, impact, value.</p></a>
+    <a class="card" href="docs/INSTALL.md"><h3>Install guide</h3><p>Add Job Lander to your own Claude.</p></a>
+    <a class="card b" href="skill/SKILL.md"><h3>The skill</h3><p>Orchestrator + both agents (SKILL.md).</p></a>
+  </div>
+
+  <footer>Built as a <a href="https://claude.com/claude-code">Claude Code</a> skill · <a href="https://github.com/limatokyo/job-lander">source on GitHub</a> · MIT licensed</footer>
+</div>
+</body>
+</html>
